@@ -3,7 +3,7 @@ import app from "../src/app";
 import { AwardIntervalsResponse } from "../src/types";
 
 describe("Integration Test - GET /awards/producer-intervals", () => {
-  it("deve retornar os intervalos corretos de prêmios para os produtores", async () => {
+  it("Must return the intervals correctly of the awards for to producers", async () => {
     const expectedResponse: AwardIntervalsResponse = {
       min: [
         {
@@ -24,12 +24,9 @@ describe("Integration Test - GET /awards/producer-intervals", () => {
     };
 
     const res = await request(app).get("/api/awards/producer-intervals");
-
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty("min");
     expect(res.body).toHaveProperty("max");
-
-    // Verifique que os dados de `min` e `max` retornados correspondem exatamente ao esperado
     expect(res.body).toEqual(expectedResponse);
   });
 });
