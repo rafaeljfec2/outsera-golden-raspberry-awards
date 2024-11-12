@@ -9,6 +9,8 @@ This is a RESTful API that allows reading the list of nominees and winners for t
 - Express
 - SQLite (in-memory database)
 - Jest and Supertest (for integration tests)
+- Docker
+- Docker compose
 
 ## Prerequisites
 
@@ -42,11 +44,17 @@ To run the project in development mode, use:
 npm run start
 ```
 
+# To run the project in docker, use:
+
+```bash
+docker-compose up -d
+```
+
 The API will be available at http://localhost:3000.
 
 # Endpoints
 
-# GET /awards/producer-intervals
+# GET /api/awards/producer-intervals
 
 Returns the producer with the longest interval between two consecutive awards and the producer who won two awards the fastest.
 
