@@ -24,11 +24,11 @@ This is a RESTful API that allows reading the list of nominees and winners for t
    cd golden-raspberry-awards-api
    ```
 
-2 . **Install dependencies**:
+2. **Install dependencies**:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 # Configuration
 
@@ -39,5 +39,21 @@ The project does not require additional environment configurations, as it uses a
 To run the project in development mode, use:
 
 ```bash
-npm install
+npm run start
+```
+
+The API will be available at http://localhost:3000.
+
+# Endpoints
+
+# GET /awards/producer-intervals
+
+Returns the producer with the longest interval between two consecutive awards and the producer who won two awards the fastest.
+
+# Running Integration Tests
+
+To run the integration tests, use the command:
+
+```bash
+npm run test
 ```
