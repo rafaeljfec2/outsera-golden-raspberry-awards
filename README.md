@@ -58,7 +58,7 @@ The API will be available at http://localhost:3000.
 
 # Endpoints
 
-# GET /api/awards/producer-intervals
+### GET /api/awards/producer-intervals
 
 Returns the producer with the longest interval between two consecutive awards and the producer who won two awards the fastest.
 
