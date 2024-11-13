@@ -45,7 +45,7 @@ If you want to run the application in a Docker container, make sure you have Doc
 To run the project in development mode, use:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 To run the project in docker, use:
@@ -61,6 +61,31 @@ The API will be available at http://localhost:3000.
 # GET /api/awards/producer-intervals
 
 Returns the producer with the longest interval between two consecutive awards and the producer who won two awards the fastest.
+
+### Example Response
+
+The following is an example response from the `/awards/producer-intervals` endpoint:
+
+```json
+{
+  "min": [
+    {
+      "producers": "Bo Derek",
+      "interval": 6,
+      "previousWin": 1984,
+      "followingWin": 1990
+    }
+  ],
+  "max": [
+    {
+      "producers": "Bo Derek",
+      "interval": 6,
+      "previousWin": 1984,
+      "followingWin": 1990
+    }
+  ]
+}
+```
 
 # Running Integration Tests
 
