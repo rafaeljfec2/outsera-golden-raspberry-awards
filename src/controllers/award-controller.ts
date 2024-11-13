@@ -9,9 +9,7 @@ const getProducerIntervalsController = async (
     const result = await getProducerIntervals();
     res.json(result);
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Erro ao obter intervalos de prêmios", error });
+    res.status(500).json({ message: "Error getting awards ranges", error });
   }
 };
 

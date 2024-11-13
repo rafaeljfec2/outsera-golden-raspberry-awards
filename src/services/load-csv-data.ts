@@ -1,42 +1,36 @@
-import fs from "fs";
-import csv from "csv-parser";
+import fs from "fs/promises";
 import path from "path";
-import {
-  createMoviesTable,
-  insertMovie,
-} from "../repositories/movie-repository";
+import { parse } from "csv-parse/sync";
+import { createMoviesTable, insertMovie } from "../repositories";
 
-export const loadCsvData = (): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    createMoviesTable()
-      .then(() => {
-        const csvFilePath = path.join(
-          __dirname,
-          "..",
-          "..",
-          "data",
-          "movielist.csv"
-        );
+const loadCsvData = async (): Promise<void> => {
+  await createMoviesTable();
 
-        fs.createReadStream(csvFilePath)
-          .pipe(csv({ separator: ";" }))
-          .on("data", (row) => {
-            const isWinner = row.winner?.toLowerCase() === "yes";
-            insertMovie(
-              Number(row.year),
-              row.title,
-              row.studios,
-              row.producers,
-              isWinner
-            );
-          })
-          .on("end", () => {
-            resolve();
-          })
-          .on("error", (err) => {
-            reject(err);
-          });
-      })
-      .catch(reject);
-  });
+  const csvFilePath = path.join(__dirname, "..", "..", "data", "movielist.csv");
+
+  try {
+    const fileContent = await fs.readFile(csvFilePath, "utf-8");
+
+    const records = parse(fileContent, {
+      columns: true,
+      skip_empty_lines: true,
+      delimiter: ";",
+    });
+
+    for (const row of records) {
+      const isWinner = row.winner?.toLowerCase() === "yes";
+      insertMovie(
+        Number(row.year),
+        row.title,
+        row.studios,
+        row.producers,
+        isWinner
+      );
+    }
+  } catch (error) {
+    console.error("Error loading CSV data:", error);
+    throw error;
+  }
 };
+
+export default loadCsvData;

@@ -1,9 +1,14 @@
 import request from "supertest";
 import app from "../src/app";
+import loadCsvData from "../src/services/load-csv-data";
 import { AwardIntervalsResponse } from "../src/types";
 
+beforeAll(async () => {
+  await loadCsvData();
+});
+
 describe("Integration Test - GET /awards/producer-intervals", () => {
-  it("Must return the intervals correctly of the awards for to producers", async () => {
+  it("should return the correct award intervals for producers", async () => {
     const expectedResponse: AwardIntervalsResponse = {
       min: [
         {

@@ -1,9 +1,15 @@
 import app from "./app";
-import { checkFileExists } from "./utils/file-checker";
+import loadCsvData from "./services/load-csv-data";
+import { checkMovieListFileExists } from "./utils/file-movielist-checker";
 
-checkFileExists("movielist.csv");
+const startServer = async (): Promise<void> => {
+  await checkMovieListFileExists();
+  await loadCsvData();
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
-});
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+};
+
+startServer();

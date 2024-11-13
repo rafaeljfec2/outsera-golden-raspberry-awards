@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-export function checkFileExists(filename: string): void {
+export const checkMovieListFileExists = async (): Promise<void> => {
+  const filename = "movielist.csv";
   const filePath = path.join(__dirname, "..", "..", "data", filename);
   if (!fs.existsSync(filePath)) {
     console.error(
@@ -9,4 +10,4 @@ export function checkFileExists(filename: string): void {
     );
     process.exit(1);
   }
-}
+};
