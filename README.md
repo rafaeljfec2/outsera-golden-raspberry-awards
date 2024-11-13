@@ -36,6 +36,10 @@ This is a RESTful API that allows reading the list of nominees and winners for t
 
 The project does not require additional environment configurations, as it uses an in-memory database (SQLite) and loads data from a CSV file. Ensure that the file movielist.csv is located in the data/ folder at the root of the project.
 
+# Prerequisite for Docker
+
+If you want to run the application in a Docker container, make sure you have Docker installed on your machine. You can download Docker from Docker's official website. Follow the installation instructions for your operating system.
+
 # Running the Project
 
 To run the project in development mode, use:
@@ -44,7 +48,7 @@ To run the project in development mode, use:
 npm run start
 ```
 
-# To run the project in docker, use:
+To run the project in docker, use:
 
 ```bash
 docker-compose up -d
