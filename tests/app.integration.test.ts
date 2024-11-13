@@ -12,18 +12,18 @@ describe("Integration Test - GET /awards/producer-intervals", () => {
     const expectedResponse: AwardIntervalsResponse = {
       min: [
         {
-          producers: "Bo Derek",
-          interval: 6,
-          previousWin: 1984,
-          followingWin: 1990,
+          producers: "Joel Silver",
+          interval: 1,
+          previousWin: 1990,
+          followingWin: 1991,
         },
       ],
       max: [
         {
-          producers: "Bo Derek",
-          interval: 6,
-          previousWin: 1984,
-          followingWin: 1990,
+          producers: "Matthew Vaughn",
+          interval: 13,
+          previousWin: 2002,
+          followingWin: 2015,
         },
       ],
     };

@@ -19,13 +19,20 @@ const loadCsvData = async (): Promise<void> => {
 
     for (const row of records) {
       const isWinner = row.winner?.toLowerCase() === "yes";
-      insertMovie(
-        Number(row.year),
-        row.title,
-        row.studios,
-        row.producers,
-        isWinner
-      );
+
+      const producers = row.producers
+        .split(/,|\sand\s/)
+        .map((producer: string) => producer.trim());
+
+      for (const producer of producers) {
+        insertMovie(
+          Number(row.year),
+          row.title,
+          row.studios,
+          producer,
+          isWinner
+        );
+      }
     }
   } catch (error) {
     console.error("Error loading CSV data:", error);
