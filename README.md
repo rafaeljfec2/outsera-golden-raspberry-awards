@@ -64,7 +64,7 @@ Returns the producer with the longest interval between two consecutive awards an
 
 ### Example Response
 
-The following is an example response from the `/awards/producer-intervals` endpoint:
+The following is an example response from the `/api/awards/producer-intervals` endpoint:
 
 ```json
 {
